@@ -1,5 +1,12 @@
 name: 自动化测试
+    - name: 启动服务器（后台运行）
+      run: |
+        python student_system.py &
+        sleep 3
 
+    - name: 运行测试
+      run: |
+        pytest test_allure.py -v --alluredir=./allure-results
 on:
   push:
     branches: [ main ]

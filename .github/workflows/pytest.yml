@@ -34,8 +34,10 @@ jobs:
 
     - name: 启动服务器（后台运行）
       run: |
-        python student_system.py &
-        sleep 3
+        python student_system.py > server.log 2>&1 &
+        sleep 5
+        curl http://127.0.0.1:5001 || echo "服务器未启动"
+        cat server.log
 
     - name: 运行测试
       run: |

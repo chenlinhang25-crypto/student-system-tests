@@ -11,16 +11,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
 
     - name: 设置 Python
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v5
       with:
         python-version: '3.10'
 
     - name: 安装依赖
       run: |
         pip install pytest requests allure-pytest
+
+    # 删除启动服务器的步骤！
 
     - name: 运行测试
       run: |
@@ -31,14 +33,3 @@ jobs:
       with:
         name: allure-report
         path: allure-results
-
-    - name: 启动服务器（后台运行）
-      run: |
-        python student_system.py > server.log 2>&1 &
-        sleep 5
-        curl http://127.0.0.1:5001 || echo "服务器未启动"
-        cat server.log
-
-    - name: 运行测试
-      run: |
-        pytest test_allure.py -v --alluredir=./allure-results

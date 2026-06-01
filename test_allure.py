@@ -8,7 +8,7 @@ test_data = [
     {"id": "7003", "name": "张2"},
 ]
 
-BASE_URL = "http://127.0.0.1:5001"
+BASE_URL = "http://192.168.31.117:5001"
 
 
 @allure.feature("学生管理")

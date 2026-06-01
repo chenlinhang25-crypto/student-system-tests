@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>测开 7 天冲刺训练营</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">QA to SDET Sprint</p>
+        <h1>测开 7 天冲刺训练营</h1>
+      </div>
+      <div class="progressBox" aria-label="学习进度">
+        <span id="progressText">0/7</span>
+        <div class="progressTrack"><div id="progressFill"></div></div>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="sidebar">
+        <button class="tab active" data-view="plan">每日任务</button>
+        <button class="tab" data-view="theory">理论速记</button>
+        <button class="tab" data-view="practice">考试练习</button>
+        <button class="tab" data-view="interview">面试题库</button>
+        <button class="tab" data-view="resume">简历项目</button>
+      </aside>
+
+      <section class="content">
+        <section id="plan" class="view active">
+          <div class="sectionHead">
+            <h2>每天完成一项</h2>
+            <button id="resetBtn" class="ghostBtn">重置进度</button>
+          </div>
+          <div id="dayList" class="dayList"></div>
+        </section>
+
+        <section id="theory" class="view">
+          <h2>必须背下来的理论</h2>
+          <div id="theoryList" class="theoryGrid"></div>
+        </section>
+
+        <section id="practice" class="view">
+          <div class="sectionHead">
+            <h2>每日考试练习</h2>
+            <button id="checkQuizBtn" class="primaryBtn">交卷</button>
+          </div>
+          <div id="quizList" class="quizList"></div>
+          <div id="quizResult" class="resultBox" hidden></div>
+        </section>
+
+        <section id="interview" class="view">
+          <h2>测开面试高频题</h2>
+          <div id="interviewList" class="interviewList"></div>
+        </section>
+
+        <section id="resume" class="view">
+          <h2>简历项目写法</h2>
+          <div class="resumePanel">
+            <h3>接口自动化测试框架项目</h3>
+            <p>基于 Python + pytest + requests + YAML + Allure 搭建接口自动化测试框架，支持测试数据驱动、公共请求封装、断言校验、测试报告生成，可接入 Jenkins 实现持续集成。</p>
+            <ul>
+              <li>封装统一请求方法，减少重复代码，提高用例可维护性。</li>
+              <li>使用 YAML 管理接口路径、请求参数和预期结果，实现数据驱动。</li>
+              <li>通过 pytest 参数化执行多组用例，输出 Allure 可视化报告。</li>
+              <li>对登录、查询、异常参数等接口场景进行自动化覆盖。</li>
+            </ul>
+            <h3>你要能讲清楚的亮点</h3>
+            <p>框架分层、断言策略、token 管理、失败定位、日志记录、测试数据维护、持续集成触发方式。</p>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

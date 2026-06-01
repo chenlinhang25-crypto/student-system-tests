@@ -1,28 +1,21 @@
-"""
-conftest.py - 共享 fixture
-同目录下所有测试文件自动可用，不需要 import
-"""
 
 import pytest
 import requests
 
-BASE_URL = "http://127.0.0.1:5001"
 
 
-@pytest.fixture(scope="function")
-def new_student():
-    """创建新学生（所有测试文件都能用）"""
-    student_id = "conftest_001"
-    print(f"\n[conftest] 创建学生: {student_id}")
-    requests.post(
-        f"{BASE_URL}/student",
-        json={"id": student_id, "name": "conftest学生"}
-    )
-    yield student_id
-    print(f"[conftest] 测试结束: {student_id}")
+BASE_URL = "http://192.168.31.117:5001"  # 你的服务器地址
 
-
-@pytest.fixture(scope="session")
+# 1. base_url fixture
+@pytest.fixture
 def base_url():
-    """提供基础 URL"""
     return BASE_URL
+
+# 2. new_student fixture（创建学生，返回ID）
+@pytest.fixture
+def new_student(base_url):
+    student_id = "test_001"
+    response = requests.post(f'{base_url}/student', json={"id": student_id,"name":"xues"})
+    assert response.json()["code"] == 0
+    yield student_id
+    print(f"测试结束，学生{student_id}")
